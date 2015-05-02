@@ -16,12 +16,12 @@ html, body {
 	font-family: 'Open Sans', sans-serif;
 }
 .container-fluid {
-	position: relative;
 	background-color: #afafaf;
+	box-shadow: 0 12px 50px -12px rgba(0,0,0,0.5);
 	padding-top: 3%;
 	padding-left: 5%;
 	padding-right: 5%;
-	box-shadow: 0 12px 50px -12px rgba(0,0,0,0.5);
+	padding-bottom: 5vh;
 	min-height: 80vh;
 }
 
@@ -34,12 +34,20 @@ h2 {
 	}
 }
 
+.noselect(@state: none) {
+    -webkit-touch-callout: @state;
+      -webkit-user-select: @state;
+       -khtml-user-select: @state;
+         -moz-user-select: @state;
+          -ms-user-select: @state;
+              user-select: @state;
+}
+
 // ============================================================================
 // Plano de la EPS
 // ============================================================================
 .floorplan {
 	.make-row();
-	padding-bottom: 3em;
 
 	// Bloques de los lados
 	.west, .east {
@@ -47,11 +55,11 @@ h2 {
 		.make-sm-column(6);
 		// Un poquito de padding
 		padding: 0 2em;
+		margin-bottom: 1.2em;
 	}
 	.north, .south {
 		.make-row();
 	}
-	.south { margin-bottom: 1.2em; }
 
 	@lab-border-radius: 5px;
 	.middle .lab:first-child, .north .lab:first-child {  border-top-left-radius: @lab-border-radius; }
@@ -70,7 +78,8 @@ h2 {
 	.lab {
 		.make-xs-column(3);
 		&.double {
-			.make-xs-column(6);
+			// El 0 es para eliminar el padding
+			.make-xs-column(6, 0);
 		}
 
 		// Posicion y tamaño
@@ -107,6 +116,7 @@ h2 {
 			display: inline-block;
 			margin-top: 0.2em;
 			width: 100%;
+			.noselect();
 
 			font-size: 0.8em;
 			&.activity {
@@ -118,7 +128,6 @@ h2 {
 			&.timeUntilChange {
 				color: fade(#fff, 65%);
 			}
-
 
 			&.name {
 				margin-top: 0;

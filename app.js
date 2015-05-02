@@ -4,11 +4,10 @@ $(function() {
 	$('.ribbon').toggle(window.location.host != 'labs.michis.me');
 
 	// Inicializacion: rellenamos los laboratorios con sus etiquetas
-	var tabindex = 0;
 	$(".floorplan").find(".lab").each(function() {
 		var lab = $(this);
 
-		lab.attr("tabindex", ++tabindex);
+		lab.attr("tabindex", 1);
 		// Añadimos la etiqueta con el nombre del laboratorio
 		lab.append("<span class='info name'>" + this.id + "</span>");
 		lab.append(" <span class='info activity'></span>");
